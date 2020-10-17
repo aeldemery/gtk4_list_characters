@@ -20,4 +20,4 @@ gtk 3.99.3
 
 ## Screenshot <a name = "screenshot"></a>
 
-![Screenshot]()
+![Screenshot](https://github.com/aeldemery/gtk4_list_characters/blob/master/Screenshot1.png)
