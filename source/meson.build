@@ -18,6 +18,7 @@ dependencies = [
 executable (
     meson.project_name (),
     sources: sources,
+    vala_args: '--target-glib=2.66',
     dependencies: dependencies,
     install: true,
 )

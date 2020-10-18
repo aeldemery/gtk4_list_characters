@@ -34,7 +34,10 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
         selection = new Gtk.SingleSelection (character_model);
         selection.autoselect = true;
         selection.can_unselect = false;
-        selection.notify["selected"].connect (selection_changed);
+
+        var click_gesture = new Gtk.GestureClick ();
+        click_gesture.released.connect (clicked_cb);
+        this.add_controller (click_gesture);
 
         sw = new Gtk.ScrolledWindow ();
         sw.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
@@ -135,7 +138,7 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
         label.add_css_class ("enormous");
 
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/github/aeldemery/gtk4_list_characters/style.css");
+        provider.load_from_resource ("/github/aeldemery/styles/style.css");
 
         label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         label.hexpand = true;
@@ -215,17 +218,10 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
         label.label = item.script;
     }
 
-    void selection_changed (Object selection, ParamSpec pspec) {
-        var select = (Gtk.SingleSelection)selection;
-        var item = (UnicodeItem) select.get_selected_item ();
-        var dialog = new Gtk.MessageDialog (
-            (Gtk.Window)this.root,
-            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            Gtk.MessageType.INFO,
-            Gtk.ButtonsType.OK, "Unicode: U+%.4X\nName: %s\n", item.codepoint, item.name);
-        dialog.response.connect ((id) => {
-            dialog.hide();
-        });
-        dialog.present ();
+    void clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y) {
+        var item = (UnicodeItem) selection.get_selected_item ();
+
+        //  var dialog = new DisplayDialog (item);
+        //  dialog.present ();
     }
 }

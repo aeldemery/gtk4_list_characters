@@ -4,5 +4,5 @@ project (
     version: '0.1.0',
 )
 
-subdir ('data' / 'resources')
+subdir ('resources')
 subdir ('source')
