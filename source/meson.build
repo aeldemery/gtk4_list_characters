@@ -4,13 +4,14 @@ sources = files (
     'CharactersView.vala',
     'UnicodeItem.vala',
     'UnicodeItemsModel.vala',
+    #'DisplayDialog.vala',
 )
 
 sources += project_resources
 
 dependencies = [
     dependency ('gtk4', version: '>=3.99.3'),
-    dependency ('glib-2.0'),
+    dependency ('glib-2.0', version: '>=2.50'),
     dependency ('gobject-2.0'),
     dependency ('pangocairo'),
 ]
@@ -18,7 +19,6 @@ dependencies = [
 executable (
     meson.project_name (),
     sources: sources,
-    vala_args: '--target-glib=2.66',
     dependencies: dependencies,
     install: true,
 )
