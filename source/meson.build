@@ -4,7 +4,7 @@ sources = files (
     'CharactersView.vala',
     'UnicodeItem.vala',
     'UnicodeItemsModel.vala',
-    #'DisplayDialog.vala',
+    'DisplayDialog.vala',
 )
 
 sources += project_resources
@@ -16,9 +16,14 @@ dependencies = [
     dependency ('pangocairo'),
 ]
 
+vala_args = [
+    '--enable-experimental',
+    '--gresourcesdir=' + join_paths ('../resources/'),
+]
 executable (
     meson.project_name (),
     sources: sources,
+    vala_args: vala_args,
     dependencies: dependencies,
     install: true,
 )

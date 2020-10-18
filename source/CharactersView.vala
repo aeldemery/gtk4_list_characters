@@ -138,7 +138,7 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
         label.add_css_class ("enormous");
 
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/github/aeldemery/styles/style.css");
+        provider.load_from_resource ("/resources/styles/style.css");
 
         label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         label.hexpand = true;
@@ -220,8 +220,8 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
 
     void clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y) {
         var item = (UnicodeItem) selection.get_selected_item ();
-
-        //  var dialog = new DisplayDialog (item);
-        //  dialog.present ();
+        var main_win = (Gtk.Window) this.get_ancestor (typeof (Gtk.Window));
+        var dialog = new DisplayDialog (item, main_win);
+        dialog.present ();
     }
 }
