@@ -10,7 +10,7 @@ public class Gtk4Demo.UnicodeItemsModel : Object, ListModel {
         non_printable_items = new GLib.ListStore (typeof (UnicodeItem));
 
         try {
-            var bytes = resources_lookup_data ("/resources/data/ucdnames.data", GLib.ResourceLookupFlags.NONE);
+            var bytes = resources_lookup_data ("/github/aeldemery/gtk4_list_characters/data/ucdnames.data", GLib.ResourceLookupFlags.NONE);
             var variant = new Variant.from_bytes (new VariantType ("a(us)"), bytes, true);
             var iter = new VariantIter (variant);
 

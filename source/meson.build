@@ -7,8 +7,6 @@ sources = files (
     'DisplayDialog.vala',
 )
 
-sources += project_resources
-
 dependencies = [
     dependency ('gtk4', version: '>=3.99.3'),
     dependency ('glib-2.0', version: '>=2.50'),
@@ -16,9 +14,11 @@ dependencies = [
     dependency ('pangocairo'),
 ]
 
+sources += project_resources
+
 vala_args = [
     '--enable-experimental',
-    '--gresourcesdir=' + join_paths ('../resources/'),
+    #'--gresourcesdir=' + join_paths ('../resources/'),
 ]
 executable (
     meson.project_name (),

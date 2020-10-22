@@ -1,4 +1,4 @@
-// [GtkTemplate (ui = "/resources/layouts/dialog.ui")]
+// [GtkTemplate (ui = "/github/aeldemery/gtk4_list_characters/layouts/dialog.ui")]
 public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
     // [GtkChild]
     Gtk.Label lbl_char;
@@ -18,6 +18,9 @@ public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
     // [GtkChild]
     Gtk.Label lbl_break_type;
 
+    // [GtkChild]
+    // Gtk.Button btn_ok;
+
     static construct {
     }
 
@@ -27,11 +30,13 @@ public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
 
         var btn = (Gtk.Button) this.add_button ("Ok", Gtk.ResponseType.OK);
         btn.clicked.connect ((button) => {
-            this.hide ();
+            this.destroy ();
         });
         var box = this.get_content_area ();
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+        box.homogeneous = true;
+        box.margin_bottom = box.margin_end = box.margin_start = box.margin_top = 12;
         hbox.homogeneous = true;
         vbox.homogeneous = true;
 
@@ -40,7 +45,7 @@ public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
         lbl_char.add_css_class ("enormous");
 
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/resources/styles/style.css");
+        provider.load_from_resource ("/github/aeldemery/gtk4_list_characters/styles/style.css");
 
         lbl_char.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         lbl_char.hexpand = true;
@@ -67,8 +72,8 @@ public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
         box.append (hbox);
     }
 
-    // [GtkCallback]
-    // void on_btn_ok_clicked (Gtk.Button button) {
-    // this.hide ();
-    // }
+    //  [GtkCallback]
+    //  void on_btn_ok_clicked (Gtk.Button button) {
+    //      this.hide ();
+    //  }
 }

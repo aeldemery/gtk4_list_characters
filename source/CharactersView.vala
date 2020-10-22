@@ -138,7 +138,7 @@ public class Gtk4Demo.CharactersView : Gtk.Widget {
         label.add_css_class ("enormous");
 
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/resources/styles/style.css");
+        provider.load_from_resource ("/github/aeldemery/gtk4_list_characters/styles/style.css");
 
         label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         label.hexpand = true;
