@@ -8,7 +8,7 @@ sources = files (
 )
 
 dependencies = [
-    dependency ('gtk4', version: '>=3.99.3'),
+    dependency ('gtk4', version: '>=4.0.0'),
     dependency ('glib-2.0', version: '>=2.50'),
     dependency ('gobject-2.0'),
     dependency ('pangocairo'),

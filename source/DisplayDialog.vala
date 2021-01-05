@@ -53,6 +53,7 @@ public class Gtk4Demo.DisplayDialog : Gtk.Dialog {
 
         lbl_codepoint = new Gtk.Label ("U+%.4X".printf (item.codepoint));
         lbl_codepoint.xalign = 0;
+        lbl_codepoint.selectable = true;
         lbl_name = new Gtk.Label (item.name);
         lbl_name.xalign = 0;
         lbl_script = new Gtk.Label (item.script);
